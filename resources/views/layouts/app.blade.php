@@ -9,11 +9,11 @@
         </title>
 
         {{-- Bootstrap --}}
-        <link rel="stylesheet" href="/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" >
         {{-- Font awesome --}}
-        <link rel="stylesheet" href="/css/font-awesome.min.css" >
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" >
         {{-- custom styles --}}
-        <link rel="stylesheet" href="/css/style.css" >
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
 
     </head>
     
@@ -80,8 +80,13 @@
                     @auth
                         <div class="col-md-4">
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="">Post</a> </li>
+                                <li class="list-group-item"><a href="{{ route('posts.index') }}">Post</a> </li>
                                 <li class="list-group-item"><a href="{{ route('categories.index') }}">Category</a> </li>
+                            </ul>
+                            <hr>
+
+                             <ul class="list-group">
+                                <li class="list-group-item"><a href="{{ route('trashed-posts.index') }}">Trashed Posts</a> </li>
                             </ul>
                         </div>
 
@@ -107,8 +112,9 @@
     </div>
 
     {{-- Scripts --}}
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    @yield('scripts')
 </body>
 </html>
