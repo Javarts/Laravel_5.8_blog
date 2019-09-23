@@ -8,4 +8,8 @@ class Category extends Model
 {
     /* mass assignment */
     protected $fillable = ['name'];
+
+    public function posts(){
+        return $this->hasMany(Posts::class);
+    }
 }

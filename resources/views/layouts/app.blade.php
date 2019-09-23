@@ -15,8 +15,10 @@
         {{-- custom styles --}}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
 
+        @yield('css')
+
     </head>
-    
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,28 +82,40 @@
                     @auth
                         <div class="col-md-4">
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="{{ route('posts.index') }}">Post</a> </li>
-                                <li class="list-group-item"><a href="{{ route('categories.index') }}">Category</a> </li>
+                                <li class="list-group-item"><a href="{{ route('posts.index') }}">Post <span class="fa fa-edit"></span></a> </li>
+                                <li class="list-group-item"><a href="{{ route('categories.index') }}">Category <span class="fa fa-edit"></span></a> </li>
+                                <li class="list-group-item"><a href="{{ route('tags.index') }}">Tags <span class="fa fa-tags"></span></a> </li>
                             </ul>
                             <hr>
 
                              <ul class="list-group">
-                                <li class="list-group-item"><a href="{{ route('trashed-posts.index') }}">Trashed Posts</a> </li>
+                                <li class="list-group-item"><a href="{{ route('trashed-posts.index') }}">Trashed Posts <span class="fa fa-trash-o"></span></a> </li>
                             </ul>
                         </div>
 
                     <div class="col-md-8">
-                        
+
                     {{-- Flash messages --}}
                     @if (session()->has('success'))
                         <div class="alert alert-success">
                             {{ session()->get('success')  }}
                         </div>
+                    @elseif(session()->has('error'))
+                        <div class="alert alert-danger">
+                            <b>{{ session()->get('error')  }}</b>
+                        </div>  
                     @endif
                     
+                    {{-- category custom error flash message with link --}}
+                    @if (session()->has('cat-error'))
+                        <div class="alert alert-danger">
+                            <b>{{ session()->get('cat-error')  }} <a href="{{ route('categories.create') }}" class="btn btn-success btn-xs">add caregory</a></b>
+                        </div>
+                    @endif
+
                         @yield('content')
                     </div>
-                    
+
 
                     @else
                         @yield('content')

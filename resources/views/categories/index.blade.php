@@ -16,6 +16,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <th>Name</th>
+                        <th>Posts Count</th>
                         <th>Actions</th>
                     </thead>
 
@@ -23,6 +24,7 @@
                         @foreach ($categories as $category)
                             <tr>
                                 <td>{{ $category->name }}</td>
+                                <td>{{ $category->posts->count() }}</td>
                                 <td>
                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-xsms"><span class="fa fa-edit"></span></a>
                                     {{-- <a href="" class="btn btn-danger btn-sm"><span class="fa fa-trash-o"></span></a> --}}
@@ -40,7 +42,7 @@
                </div>
             @endif
 
-            <!-- Modal -->
+                <!-- Modal -->
                 <div id="myModal" class="modal fade" role="dialog">
                     <div class="modal-dialog modal-sm">
 

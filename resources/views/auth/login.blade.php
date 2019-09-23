@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 style="margin:0; color:dimgray"><b>{{ __('Login') }} <span class="fa fa-lock"></span></b></h3></div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,6 +65,10 @@
                             </div>
                         </div>
                     </form>
+                </div>
+
+                <div class="panel-footer text-center">
+                    <i>Powered by webfliqs</i> <span class="fa fa-cube fa-lg"></span>
                 </div>
             </div>
         </div>
